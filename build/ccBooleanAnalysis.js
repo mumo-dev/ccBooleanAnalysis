@@ -129,7 +129,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return [].concat.apply([], a);
 	  };
 	
-	  s = flat(s.split(/(?<=[+\*~*/()])|(?=[+\*~*/()])/).map(function (s) {
+	  s = flat(split(/([+~*/()])/).filter(function (s) {
+	    return s !== "";
+	  }).map(function (s) {
 	    return s.split(/(&amp;){2}/g);
 	  })).map(function (i) {
 	    return i.replace(/\s/g, '');
