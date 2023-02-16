@@ -56,7 +56,8 @@
     // does not exist for node 10
     const flat = a => [].concat.apply([], a);
 
-    s = flat(s.split(/(?<=[+\*~*/()])|(?=[+\*~*/()])/).map(s => s.split(/(&amp;){2}/g)))
+    s = flat(split(/([+~*/()])/).filter(s => s !== "")
+      .map(s => s.split(/(&amp;){2}/g)))
       .map(i => i.replace(/\s/g, ''))
       .map(i => i.replace(/^\d+/g, m => `${ccBooleanAnalysis._VARIABLE_PREFIXER}${m}`))
       .map(i => i.replace(/\d+$/g, m => `${m}${ccBooleanAnalysis._VARIABLE_PREFIXER}`))
